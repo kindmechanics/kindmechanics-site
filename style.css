@@ -1,0 +1,282 @@
+/* Kind Mechanics — kindmechanics.com
+   Palette: workshop enamel + graphite + brass on warm paper.
+   Type: Bricolage Grotesque (display) / Atkinson Hyperlegible (body) / IBM Plex Mono (labels).
+   Principle: the site demonstrates low cognitive drag. No motion, no tricks. */
+
+:root {
+  --paper: #f5f4ee;
+  --panel: #edecE3;
+  --ink: #23282b;
+  --ink-soft: #4c5457;
+  --enamel: #3e5c52;
+  --enamel-deep: #2e463f;
+  --brass: #8a6420;
+  --line: #c9c8bc;
+  --measure: 66ch;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
+  font-size: 1.075rem;
+  line-height: 1.65;
+}
+
+/* ---------- skip link + focus ---------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--enamel);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+.skip-link:focus { left: 0.5rem; top: 0.5rem; }
+
+:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 2px;
+}
+
+/* ---------- header ---------- */
+
+header.site {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.site-inner {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.wordmark span { color: var(--enamel); }
+
+nav.primary { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+
+nav.primary a {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+nav.primary a:hover { color: var(--ink); border-bottom-color: var(--line); }
+nav.primary a[aria-current="page"] {
+  color: var(--enamel-deep);
+  border-bottom-color: var(--enamel);
+}
+
+/* ---------- layout ---------- */
+
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+section { padding: 2.75rem 0; }
+section + section { border-top: 1px solid var(--line); }
+
+.prose { max-width: var(--measure); }
+.prose p { margin: 0 0 1.1rem; }
+
+.eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 0.9rem;
+}
+
+h1, h2, h3 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 1.2rem;
+}
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 700; max-width: 24ch; }
+h2 { font-size: clamp(1.35rem, 3vw, 1.8rem); font-weight: 600; }
+h3 { font-size: 1.12rem; font-weight: 600; margin-bottom: 0.5rem; }
+
+a { color: var(--brass); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--enamel-deep); }
+
+.lede {
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+  padding-top: 3.5rem;
+}
+
+.hero figure { margin: 0; }
+.hero figcaption {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  margin-top: 0.6rem;
+}
+
+@media (max-width: 46rem) {
+  .hero { grid-template-columns: 1fr; }
+  .hero figure { max-width: 20rem; }
+}
+
+/* ---------- distil grid ---------- */
+
+.distil {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  max-width: 54rem;
+}
+.distil > div {
+  background: var(--panel);
+  padding: 1.3rem 1.4rem;
+}
+.distil h3 { color: var(--enamel-deep); }
+.distil p { margin: 0; font-size: 0.98rem; color: var(--ink-soft); }
+
+/* ---------- recognition strip ---------- */
+
+.recognition {
+  border: 1px solid var(--enamel);
+  border-left: 6px solid var(--enamel);
+  background: #fff;
+  padding: 1.1rem 1.4rem;
+  max-width: 54rem;
+}
+.recognition p { margin: 0; }
+.recognition .eyebrow { margin-bottom: 0.35rem; }
+
+/* ---------- entries (work / writing lists) ---------- */
+
+.entry {
+  max-width: var(--measure);
+  padding: 1.6rem 0;
+}
+.entry + .entry { border-top: 1px dashed var(--line); }
+.entry .meta {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+.entry p:last-child { margin-bottom: 0; }
+
+/* ---------- newsletter ---------- */
+
+.subscribe {
+  background: var(--enamel);
+  color: #f2f4ef;
+  padding: 2rem 1.75rem;
+  max-width: 54rem;
+}
+.subscribe h2 { color: #fff; margin-bottom: 0.5rem; }
+.subscribe p { color: #dfe6dd; max-width: 52ch; }
+.subscribe form { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.1rem; }
+.subscribe input[type="email"] {
+  flex: 1 1 16rem;
+  padding: 0.65rem 0.85rem;
+  font: inherit;
+  border: 1px solid var(--enamel-deep);
+  background: #fff;
+  color: var(--ink);
+}
+.subscribe button {
+  padding: 0.65rem 1.3rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  background: var(--paper);
+  color: var(--enamel-deep);
+  cursor: pointer;
+}
+.subscribe button:hover { background: #fff; }
+
+/* ---------- footer ---------- */
+
+footer.site {
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+}
+.foot-inner {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1.6rem 1.25rem 2.2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.foot-inner p { margin: 0.15rem 0; }
+.foot-motto {
+  max-width: 34rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--enamel-deep);
+}
+
+/* ---------- colophon ---------- */
+
+.colophon {
+  border: 1px dashed var(--line);
+  background: var(--panel);
+  padding: 1.3rem 1.5rem;
+  max-width: var(--measure);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+.colophon p { margin: 0 0 0.7rem; }
+.colophon p:last-child { margin: 0; }
+
+/* ---------- reduced motion (belt and braces: there is none anyway) ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
