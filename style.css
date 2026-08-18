@@ -56,23 +56,36 @@ header.site {
 .site-inner {
   max-width: 60rem;
   margin: 0 auto;
-  padding: 1.1rem 1.25rem;
+  padding: 0.9rem 1.25rem;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.25rem;
   flex-wrap: wrap;
 }
 
 .wordmark {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: 0.01em;
-  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  flex: 0 1 auto;
   text-decoration: none;
 }
-.wordmark span { color: var(--enamel); }
+
+.wordmark img {
+  display: block;
+  width: clamp(13.5rem, 30vw, 18rem);
+  height: auto;
+}
+
+@media (max-width: 42rem) {
+  .site-inner {
+    align-items: flex-start;
+  }
+
+  .wordmark img {
+    width: min(17rem, 78vw);
+  }
+}
 
 nav.primary { display: flex; gap: 1.4rem; flex-wrap: wrap; }
 
