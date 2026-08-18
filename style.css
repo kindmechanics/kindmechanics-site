@@ -280,3 +280,43 @@ footer.site {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- revised content helpers ---------- */
+
+.intro { padding-top: 3.25rem; }
+
+.pull-line {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.28rem;
+  font-weight: 600;
+  color: var(--enamel-deep);
+}
+
+.start-grid > div { display: flex; flex-direction: column; }
+.start-grid .eyebrow { margin-bottom: 0.45rem; }
+.start-grid .card-link { margin-top: auto; padding-top: 1rem; }
+
+.guide-list {
+  border-left: 3px solid var(--line);
+  padding-left: 1.2rem;
+  margin: 1.3rem 0 1.5rem;
+}
+.guide-list p { margin: 0 0 1rem; }
+.guide-list p:last-child { margin-bottom: 0; }
+
+.compact-subscribe { margin-top: 0; }
+.subscribe-links { margin-top: 1rem; margin-bottom: 0; }
+.subscribe a { color: #f2f4ef; }
+.subscribe a:hover { color: #fff; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
